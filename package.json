@@ -1,0 +1,31 @@
+{
+  "name": "gatsby-starter-theme-workspace",
+  "private": true,
+  "author": {
+    "name": "Baiyezi",
+    "email": "lya121@gmail.com",
+    "url": "https://baiyezi.com"
+  },
+  "scripts": {
+    "build": "yarn workspace example build",
+    "develop": "yarn workspace example develop",
+    "clean": "yarn workspace example clean"
+  },
+  "workspaces": [
+    "packages/*"
+  ],
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "src/**/*.{js,jsx,json,css,md,mdx}": [
+      "prettier --write"
+    ]
+  },
+  "devDependencies": {
+    "husky": "^4.2.3",
+    "lint-staged": "^10.0.8"
+  }
+}

@@ -1,0 +1,38 @@
+{
+  "name": "gatsby-theme-baiyezi-core",
+  "version": "1.0.0",
+  "main": "gatsby-config.js",
+  "license": "MIT",
+  "description": "Lightweight blog theme based on Gatsby",
+  "keywords": [
+    "baiyezi",
+    "baiyezi-core",
+    "blog",
+    "gatsby",
+    "gatsby-plugin",
+    "gatsby-theme"
+  ],
+  "homepage": "https://github.com/662/gatsby-theme-baiyezi#readme",
+  "author": {
+    "name": "Baiyezi",
+    "email": "lya121@gmail.com",
+    "url": "https://baiyezi.com"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/662/gatsby-theme-baiyezi.git",
+    "directory": "packages/gatsby-theme-baiyezi-core"
+  },
+  "bugs": {
+    "url": "https://github.com/662/gatsby-theme-baiyezi/issues"
+  },
+  "peerDependencies": {
+    "gatsby": "^2.19.28",
+    "react": "^16.13.0",
+    "react-dom": "^16.13.0"
+  },
+  "dependencies": {
+    "gatsby-source-filesystem": "^2.1.48",
+    "gatsby-transformer-remark": "^2.6.53"
+  }
+}

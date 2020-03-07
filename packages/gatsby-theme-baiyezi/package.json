@@ -1,0 +1,39 @@
+{
+  "name": "gatsby-theme-baiyezi",
+  "version": "1.0.0",
+  "main": "gatsby-config.js",
+  "license": "MIT",
+  "description": "Based on Gatsby's blog theme and added netlify-cms for rapid blog generation and online writing",
+  "keywords": [
+    "baiyezi",
+    "blog",
+    "gatsby",
+    "gatsby-plugin",
+    "gatsby-theme",
+    "netlify-cms"
+  ],
+  "homepage": "https://github.com/662/gatsby-theme-baiyezi#readme",
+  "author": {
+    "name": "Baiyezi",
+    "email": "lya121@gmail.com",
+    "url": "https://baiyezi.com"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/662/gatsby-theme-baiyezi.git",
+    "directory": "packages/gatsby-theme-baiyezi"
+  },
+  "bugs": {
+    "url": "https://github.com/662/gatsby-theme-baiyezi/issues"
+  },
+  "peerDependencies": {
+    "gatsby": "^2.19.28",
+    "react": "^16.13.0",
+    "react-dom": "^16.13.0"
+  },
+  "dependencies": {
+    "gatsby-plugin-react-helmet": "^3.1.22",
+    "gatsby-theme-baiyezi-core": "1.0.0",
+    "react-helmet": "^5.2.1"
+  }
+}

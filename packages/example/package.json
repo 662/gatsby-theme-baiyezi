@@ -1,0 +1,28 @@
+{
+  "name": "example",
+  "version": "1.0.0",
+  "license": "MIT",
+  "private": true,
+  "author": {
+    "name": "Baiyezi",
+    "email": "lya121@gmail.com",
+    "url": "https://baiyezi.com"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/662/gatsby-theme-baiyezi.git",
+    "directory": "example"
+  },
+  "scripts": {
+    "develop": "gatsby develop",
+    "start": "gatsby develop",
+    "build": "gatsby build",
+    "clean": "gatsby clean"
+  },
+  "dependencies": {
+    "gatsby": "^2.19.28",
+    "gatsby-theme-baiyezi": "1.0.0",
+    "react": "^16.13.0",
+    "react-dom": "^16.13.0"
+  }
+}
