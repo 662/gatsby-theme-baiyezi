@@ -1,16 +1,16 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
-const Header = props => {
+const PostList = props => {
     return (
         <div>
-            
+            PostList
         </div>
     )
 }
 
-Header.propTypes = {
-    
+PostList.propTypes = {
+
 }
 
-export default Header
+export default PostList
