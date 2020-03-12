@@ -1,8 +1,8 @@
 ---
 title: About
-date: 2020-03-05
 slug: about
-excerpt: Baiyezi balabala...
+icon: address-card
+excerpt: Baiyezi about page
 ---
 
-Baiyezi balabala...
+About page

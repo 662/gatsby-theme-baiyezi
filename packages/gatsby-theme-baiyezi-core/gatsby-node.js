@@ -101,6 +101,11 @@ exports.createPages = async ({ graphql, actions, reporter }, themeOptions) => {
   })
 
   createPage({
+    path: createSlug(options.basePath, paths.archivesPath),
+    component: require.resolve(`./src/templates/posts`),
+  })
+
+  createPage({
     path: createSlug(options.basePath, paths.categoriesPath),
     component: require.resolve(`./src/templates/categories`),
   })
@@ -188,11 +193,7 @@ exports.createPages = async ({ graphql, actions, reporter }, themeOptions) => {
 
   result.data.categories.group.forEach(({ name }) => {
     createPage({
-      path: createCategoryOrTagSlug(
-        options.basePath,
-        paths.categoryPath,
-        name
-      ),
+      path: createCategoryOrTagSlug(options.basePath, paths.categoryPath, name),
       component: require.resolve(`./src/templates/category`),
       context: { name },
     })
