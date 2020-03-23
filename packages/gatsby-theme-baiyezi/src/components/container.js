@@ -1,15 +1,22 @@
 /** @jsx jsx */
 import { css, jsx } from '@emotion/core'
 
-const style = css`
+const containerStyle = css`
   max-width: 1150px;
   margin: 0 auto;
+`
+const contentStyle = css`
+  padding: 0 8px;
+  display: flex;
+  justify-content: space-between;
 `
 
 const Container = ({ children, ...props }) => {
   return (
-    <div css={style} {...props}>
-      {children}
+    <div css={containerStyle}>
+      <div css={contentStyle} {...props}>
+        {children}
+      </div>
     </div>
   )
 }

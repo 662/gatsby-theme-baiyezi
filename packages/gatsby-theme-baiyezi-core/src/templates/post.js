@@ -5,34 +5,28 @@ export default Post
 
 export const pageQuery = graphql`
   query Post($id: String!, $previousId: String, $nextId: String) {
-    post: markdownRemark(id: { eq: $id }) {
-      html
-      excerpt
-      fields {
-        title
-        date(formatString: "MMMM DD, YYYY")
-        slug
-        category {
-          name
-          slug
-        }
-        tags {
-          name
-          slug
-        }
+    post: baiyeziPost(id: { eq: $id }) {
+      body
+      title
+      date
+      path
+      image
+      category {
+        name
+        path
+      }
+      tags {
+        name
+        path
       }
     }
-    previous: markdownRemark(id: { eq: $previousId }) {
-      fields {
-        slug
-        title
-      }
+    previous: baiyeziPost(id: { eq: $previousId }) {
+      title
+      path
     }
-    next: markdownRemark(id: { eq: $nextId }) {
-      fields {
-        slug
-        title
-      }
+    next: baiyeziPost(id: { eq: $nextId }) {
+      title
+      path
     }
   }
 `

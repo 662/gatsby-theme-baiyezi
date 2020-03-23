@@ -1,12 +1,13 @@
 import { graphql } from 'gatsby'
-import Category from '../routes/category'
+import Archives from '../routes/archives'
 
-export default Category
+export default Archives
 
 export const pageQuery = graphql`
-  query CategoryPosts($name: String!) {
-    posts: allBaiyeziPost(
-      filter: { draft: { ne: true }, category: { name: { eq: $name } } }
+  query Archives {
+    archives: allBaiyeziPost(
+      filter: { draft: { ne: true } }
+      sort: { fields: date, order: DESC }
     ) {
       edges {
         node {

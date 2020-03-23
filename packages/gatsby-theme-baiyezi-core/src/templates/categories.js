@@ -5,12 +5,16 @@ export default Categories
 
 export const pageQuery = graphql`
   query Categories {
-    categories: allMarkdownRemark(
-      filter: { fields: { type: { eq: "post" }, draft: { ne: true } } }
-    ) {
-      group(field: fields___category___name) {
-        name: fieldValue
+    categories: allBaiyeziPost(filter: { draft: { ne: true } }) {
+      group(field: category___name) {
         totalCount
+        fieldValue
+        nodes {
+          category {
+            name
+            path
+          }
+        }
       }
     }
   }

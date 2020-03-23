@@ -1,30 +1,27 @@
 import { graphql } from 'gatsby'
-import Posts from '../routes/post'
+import Posts from '../routes/posts'
 
 export default Posts
 
 export const pageQuery = graphql`
   query Posts {
-    posts: allMarkdownRemark(
-      filter: { fields: { type: { eq: "post" }, draft: { ne: true } } }
-      sort: { fields: [fields___date, fields___title], order: DESC }
-      limit: 1000
+    posts: allBaiyeziPost(
+      filter: { draft: { ne: true } }
+      sort: { fields: date, order: DESC }
     ) {
       edges {
         node {
-          excerpt
-          fields {
-            title
-            date
-            slug
-            category {
-              name
-              slug
-            }
-            tags {
-              name
-              slug
-            }
+          title
+          date
+          path
+          image
+          category {
+            name
+            path
+          }
+          tags {
+            name
+            path
           }
         }
       }

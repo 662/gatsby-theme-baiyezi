@@ -1,7 +1,7 @@
 /** @jsx jsx */
 import { css, jsx } from '@emotion/core'
 
-const style = css`
+const panelStyle = css`
   padding: 32px;
   background-color: #fff;
   overflow: hidden;
@@ -12,6 +12,8 @@ const style = css`
 const titleStyle = css`
   position: relative;
   margin-bottom: 20px;
+  font-family: 'Open Sans', sans-serif;
+  letter-spacing: 2px;
   span {
     position: relative;
     display: inline-block;
@@ -40,7 +42,7 @@ const titleStyle = css`
 
 const Panel = ({ children, title }) => {
   return (
-    <div css={style}>
+    <div css={panelStyle}>
       <div css={titleStyle}>
         <span>{title}</span>
       </div>

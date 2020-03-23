@@ -5,12 +5,16 @@ export default Tags
 
 export const pageQuery = graphql`
   query Tags {
-    tags: allMarkdownRemark(
-      filter: { fields: { type: { eq: "post" }, draft: { ne: true } } }
-    ) {
-      group(field: fields___tags___name) {
-        name: fieldValue
+    tags: allBaiyeziPost(filter: { draft: { ne: true } }) {
+      group(field: tags___name) {
         totalCount
+        fieldValue
+        nodes {
+          tags {
+            name
+            path
+          }
+        }
       }
     }
   }

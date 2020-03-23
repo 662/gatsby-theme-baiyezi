@@ -8,7 +8,7 @@
   },
   "scripts": {
     "build": "yarn workspace example build",
-    "develop": "yarn workspace example develop",
+    "dev": "yarn run clean && yarn workspace example develop",
     "clean": "yarn workspace example clean"
   },
   "workspaces": [

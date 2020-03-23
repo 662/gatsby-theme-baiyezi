@@ -2,7 +2,7 @@ module.exports = {
   plugins: [
     {
       resolve: `gatsby-theme-baiyezi`,
-      options: { basePath: `/` },
+      options: { basePath: `/blog` },
     },
   ],
 }

@@ -1,5 +1,6 @@
 /** @jsx jsx */
 import { Global, css, jsx } from '@emotion/core'
+import Container from './container'
 import Header from './header'
 import Footer from './footer'
 import Sider from './sider'
@@ -10,18 +11,20 @@ const globalStyle = css`
     margin: 0;
     background-color: #f5f5f5;
   }
-  main {
-    display: flex;
-    justify-content: space-between;
-    margin: 40px auto;
-    max-width: 1150px;
-  }
   ul {
     margin: 0;
     padding: 0;
   }
+  li {
+    list-style: none;
+  }
   a {
     text-decoration: none;
+    transition: all 0.4s;
+    color: #000;
+    &:hover {
+      color: darkcyan;
+    }
   }
 `
 
@@ -30,10 +33,10 @@ const Layout = ({ children }) => {
     <div>
       <Global styles={globalStyle}></Global>
       <Header></Header>
-      <main>
-        <div>{children}</div>
+      <Container>
+        <div css={{ width: 768 }}>{children}</div>
         <Sider></Sider>
-      </main>
+      </Container>
       <Footer></Footer>
     </div>
   )
