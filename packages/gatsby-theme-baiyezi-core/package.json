@@ -33,6 +33,7 @@
   },
   "dependencies": {
     "gatsby-source-filesystem": "^2.1.48",
-    "gatsby-transformer-remark": "^2.6.53"
+    "gatsby-transformer-remark": "^2.6.53",
+    "reading-time": "^1.2.0"
   }
 }

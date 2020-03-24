@@ -1,10 +1,12 @@
 const fs = require(`fs`)
+const path = require(`path`)
+const Debug = require(`debug`)
+const readingTime = require('reading-time')
 const { createFilePath } = require(`gatsby-source-filesystem`)
 const { urlResolve, createContentDigest } = require(`gatsby-core-utils`)
+const getOptions = require('./options')
 
-const defaultOptions = {
-  basePath: '/',
-}
+const debug = Debug(`gatsby-theme-baiyezi-core`)
 
 const paths = {
   categoriesPath: 'categories',
@@ -26,8 +28,6 @@ const createPath = (base, middle = '', path = '') =>
 const createCategoryOrTagPath = (base, middle, path) =>
   createPath(base, middle, path.replace(/\/+/g, '-'))
 
-const getOptions = themeOptions => ({ ...defaultOptions, ...themeOptions })
-
 const mdResolverPassthrough = fieldName => async (
   source,
   args,
@@ -45,16 +45,38 @@ const mdResolverPassthrough = fieldName => async (
   return result
 }
 
+exports.onPreBootstrap = ({ store }, themeOptions) => {
+  const { program } = store.getState()
+  const { postPath, pagePath, assetPath } = getOptions(themeOptions)
+
+  const dirs = [
+    path.join(program.directory, postPath),
+    path.join(program.directory, pagePath),
+    path.join(program.directory, assetPath),
+  ]
+
+  dirs.forEach(dir => {
+    debug(`Initializing ${dir} directory`)
+    if (!fs.existsSync(dir)) {
+      mkdirp.sync(dir)
+    }
+  })
+}
+
 exports.createSchemaCustomization = ({ actions, schema }) => {
   const { createTypes } = actions
   createTypes(`
     type Category {
-      name: String!,
+      name: String!
       path: String!
     }
     type Tag {
-      name: String!,
+      name: String!
       path: String!
+    }
+    type Reading {
+      words: Int!
+      minutes: Int!
     }
   `)
 
@@ -88,6 +110,7 @@ exports.createSchemaCustomization = ({ actions, schema }) => {
         ...publicFields,
         category: { type: `Category` },
         tags: { type: `[Tag]!` },
+        reading: { type: `Reading!` },
         date: { type: `Date!`, extensions: { dateformat: {} } },
       },
       interfaces: [`Node`],
@@ -111,10 +134,6 @@ exports.onCreateNode = async (
     let path =
       node.frontmatter.path || createFilePath({ node, getNode, basePath: type })
     path = createPath(options.basePath, type === 'post' ? 'post' : '', path)
-
-    console.log('======================================')
-    console.log(node)
-    console.log('======================================')
 
     let fieldData = {
       title: node.frontmatter.title || '',
@@ -152,6 +171,10 @@ exports.onCreateNode = async (
           name: tag,
           path: createCategoryOrTagPath(options.basePath, paths.tagPath, tag),
         })),
+        reading: {
+          words: 1,
+          minutes: 1,
+        },
         date: node.frontmatter.date,
       }
       await createNode({
