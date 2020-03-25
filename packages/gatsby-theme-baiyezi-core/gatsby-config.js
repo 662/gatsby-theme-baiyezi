@@ -1,5 +1,5 @@
 const path = require('path')
-const getOptions = require('./options')
+const getOptions = require('./gatsby/utils/options')
 
 module.exports = themeOptions => {
   const options = getOptions(themeOptions)
