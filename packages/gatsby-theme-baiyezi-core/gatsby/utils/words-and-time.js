@@ -62,12 +62,6 @@ const wordsAndTime = html => {
       latinChars.push(char)
     }
   }
-  console.log("================================================")
-  console.log(pureText)
-  console.log(cjChars)
-  console.log(latinChars)
-  console.log("================================================")
-
 
   // Multiply non-latin character string length by 0.56, because
   // on average one word consists of 2 characters in both Chinese and Japanese

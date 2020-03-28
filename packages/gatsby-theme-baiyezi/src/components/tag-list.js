@@ -26,32 +26,16 @@ const tagListStyle = css`
   }
 `
 
-const TagItem = () => <a href="/tag/nginx">Nginx</a>
+const TagItem = ({ node }) => <a href={node.path}>{node.name}</a>
 
-const TagList = () => {
+const TagList = ({ edges }) => {
   return (
     <ul css={tagListStyle}>
-      <li>
-        <TagItem></TagItem>
-      </li>
-      <li>
-        <TagItem></TagItem>
-      </li>
-      <li>
-        <TagItem></TagItem>
-      </li>
-      <li>
-        <TagItem></TagItem>
-      </li>
-      <li>
-        <TagItem></TagItem>
-      </li>
-      <li>
-        <TagItem></TagItem>
-      </li>
-      <li>
-        <TagItem></TagItem>
-      </li>
+      {edges.map(({ node }) => (
+        <li key={node.id}>
+          <TagItem node={node}></TagItem>
+        </li>
+      ))}
     </ul>
   )
 }

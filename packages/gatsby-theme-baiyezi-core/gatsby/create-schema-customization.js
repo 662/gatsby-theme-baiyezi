@@ -64,7 +64,7 @@ module.exports = ({ actions, schema }) => {
   createTypes(
     schema.buildObjectType({
       name: `BaiyeziPage`,
-      fields: publicFields,
+      fields: { ...publicFields, icon: { type: `String` } },
       interfaces: [`Node`],
     })
   )
@@ -73,7 +73,7 @@ module.exports = ({ actions, schema }) => {
       name: `BaiyeziPost`,
       fields: {
         ...publicFields,
-        category: { type: `Category` },
+        category: { type: `Category!` },
         tags: { type: `[Tag]!` },
         reading: {
           type: `Reading!`,

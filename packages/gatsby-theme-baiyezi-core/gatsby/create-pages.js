@@ -9,7 +9,7 @@ module.exports = async ({ graphql, actions, reporter }, themeOptions) => {
 
   createPage({
     path: createPath(options.basePath),
-    component: require.resolve(`../src/templates/posts`),
+    component: require.resolve(`../src/templates/home`),
   })
 
   createPage({
@@ -27,12 +27,9 @@ module.exports = async ({ graphql, actions, reporter }, themeOptions) => {
     component: require.resolve(`../src/templates/tags.js`),
   })
 
-  const result = await graphql(`
+  const { data, errors } = await graphql(`
     {
-      posts: allBaiyeziPost(
-        filter: { draft: { ne: true } }
-        sort: { fields: date, order: DESC }
-      ) {
+      posts: allBaiyeziPost(sort: { fields: date, order: DESC }) {
         edges {
           node {
             id
@@ -46,17 +43,23 @@ module.exports = async ({ graphql, actions, reporter }, themeOptions) => {
           }
         }
       }
-      tags: allBaiyeziPost(filter: { draft: { ne: true } }) {
-        group(field: tags___name) {
-          name: fieldValue
+      tags: allBaiyeziTag {
+        edges {
+          node {
+            name
+            path
+          }
         }
       }
-      categories: allBaiyeziPost(filter: { draft: { ne: true } }) {
-        group(field: category___name) {
-          name: fieldValue
+      categories: allBaiyeziCategory {
+        edges {
+          node {
+            name
+            path
+          }
         }
       }
-      pages: allBaiyeziPage(filter: { draft: { ne: true } }, limit: 1000) {
+      pages: allBaiyeziPage {
         edges {
           node {
             id
@@ -67,11 +70,11 @@ module.exports = async ({ graphql, actions, reporter }, themeOptions) => {
     }
   `)
 
-  if (result.errors) {
-    reporter.panic(result.errors)
+  if (errors) {
+    reporter.panic(errors)
   }
 
-  result.data.posts.edges.forEach(({ node, previous, next }) => {
+  data.posts.edges.forEach(({ node, previous, next }) => {
     createPage({
       path: node.path,
       component: require.resolve(`../src/templates/post`),
@@ -83,7 +86,7 @@ module.exports = async ({ graphql, actions, reporter }, themeOptions) => {
     })
   })
 
-  result.data.pages.edges.forEach(({ node }) => {
+  data.pages.edges.forEach(({ node }) => {
     createPage({
       path: node.path,
       component: require.resolve(`../src/templates/page`),
@@ -91,19 +94,19 @@ module.exports = async ({ graphql, actions, reporter }, themeOptions) => {
     })
   })
 
-  result.data.categories.group.forEach(({ name }) => {
+  data.categories.edges.forEach(({ node }) => {
     createPage({
-      path: createCategoryOrTagPath(options.basePath, paths.categoryPath, name),
+      path: node.path,
       component: require.resolve(`../src/templates/category`),
-      context: { name },
+      context: { name: node.name },
     })
   })
 
-  result.data.tags.group.forEach(({ name }) => {
+  data.tags.edges.forEach(({ node }) => {
     createPage({
-      path: createCategoryOrTagPath(options.basePath, paths.tagPath, name),
+      path: node.path,
       component: require.resolve(`../src/templates/tag`),
-      context: { name },
+      context: { name: node.name },
     })
   })
 }

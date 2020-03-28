@@ -6,17 +6,16 @@ export default Tag
 export const pageQuery = graphql`
   query TagPosts($name: String!) {
     posts: allBaiyeziPost(
-      filter: {
-        draft: { ne: true }
-        tags: { elemMatch: { name: { eq: $name } } }
-      }
+      filter: { tags: { elemMatch: { name: { eq: $name } } } }
     ) {
       edges {
         node {
+          id
           title
           date
           path
           image
+          description
           category {
             name
             path
@@ -24,6 +23,10 @@ export const pageQuery = graphql`
           tags {
             name
             path
+          }
+          reading {
+            words
+            minutes
           }
         }
       }

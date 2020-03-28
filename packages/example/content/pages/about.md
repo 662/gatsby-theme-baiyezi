@@ -6,3 +6,5 @@ excerpt: Baiyezi about page
 ---
 
 About page
+
+![image](../assets/about/2b.jpg)

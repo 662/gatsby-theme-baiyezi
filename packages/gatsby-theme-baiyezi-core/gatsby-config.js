@@ -1,9 +1,13 @@
 const path = require('path')
 const getOptions = require('./gatsby/utils/options')
+const { createPath } = require('./gatsby/utils/paths')
 
 module.exports = themeOptions => {
   const options = getOptions(themeOptions)
   return {
+    siteMetadata: {
+      baiyeziPath: options.basePath,
+    },
     plugins: [
       `gatsby-plugin-react-helmet`,
       `gatsby-transformer-remark`,
@@ -18,6 +22,13 @@ module.exports = themeOptions => {
       {
         resolve: `gatsby-source-filesystem`,
         options: { name: `asset`, path: options.assetPath },
+      },
+      {
+        resolve: 'gatsby-plugin-copy-files',
+        options: {
+          source: options.assetPath,
+          destination: `${options.basePath}/assets`,
+        },
       },
     ],
   }

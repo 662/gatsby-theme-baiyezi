@@ -5,15 +5,15 @@ export default Category
 
 export const pageQuery = graphql`
   query CategoryPosts($name: String!) {
-    posts: allBaiyeziPost(
-      filter: { draft: { ne: true }, category: { name: { eq: $name } } }
-    ) {
+    posts: allBaiyeziPost(filter: { category: { name: { eq: $name } } }) {
       edges {
         node {
+          id
           title
           date
           path
           image
+          description
           category {
             name
             path
@@ -21,6 +21,10 @@ export const pageQuery = graphql`
           tags {
             name
             path
+          }
+          reading {
+            words
+            minutes
           }
         }
       }

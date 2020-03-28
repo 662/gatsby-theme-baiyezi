@@ -1,6 +1,6 @@
 import React from 'react'
 
-export default function Posts({ data }) {
+export default function Home({ data }) {
   return (
     <>
       <h2>Posts</h2>

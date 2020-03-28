@@ -5,16 +5,15 @@ export default Archives
 
 export const pageQuery = graphql`
   query Archives {
-    archives: allBaiyeziPost(
-      filter: { draft: { ne: true } }
-      sort: { fields: date, order: DESC }
-    ) {
+    archives: allBaiyeziPost(sort: { fields: date, order: DESC }) {
       edges {
         node {
+          id
           title
           date
           path
           image
+          description
           category {
             name
             path
@@ -22,6 +21,10 @@ export const pageQuery = graphql`
           tags {
             name
             path
+          }
+          reading {
+            words
+            minutes
           }
         }
       }

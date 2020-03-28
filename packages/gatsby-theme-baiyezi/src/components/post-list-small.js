@@ -6,7 +6,7 @@ const postItemSmallStyle = css`
   background-color: #fff;
   border-top: 1px solid #eee;
   padding: 16px 0;
-  &:first-child {
+  &:first-of-type {
     border-top: none;
     padding-top: 0;
   }
@@ -31,33 +31,32 @@ const postItemSmallStyle = css`
   }
 `
 
-const PostItemSmall = () => {
+const PostItemSmall = ({ node }) => {
   return (
     <div css={postItemSmallStyle}>
       <div className="thumb">
         <a
-          href="/post/hi"
+          href={node.path}
           css={{
-            background: `url(https://4.bp.blogspot.com/-9qcDqK1Y9C0/WjQEt1JLQDI/AAAAAAAAKG4/gVDqHBjHbRYalLfHawAqHez5IzS8EYhxgCLcBGAs/s1600/07.jpeg) no-repeat center center`,
+            background: `url(${node.image}) no-repeat center center`,
             backgroundSize: 'cover',
           }}></a>
       </div>
       <div className="detail">
         <div className="title">
-          <a href="/post/hi">Beautiful women relaxing at the luxury poolside</a>
+          <a href={node.path}>{node.title}</a>
         </div>
       </div>
     </div>
   )
 }
 
-const PostListSmall = () => {
+const PostListSmall = ({ edges }) => {
   return (
     <div>
-      <PostItemSmall></PostItemSmall>
-      <PostItemSmall></PostItemSmall>
-      <PostItemSmall></PostItemSmall>
-      <PostItemSmall></PostItemSmall>
+      {edges.map(({ node }) => (
+        <PostItemSmall key={node.id} node={node}></PostItemSmall>
+      ))}
     </div>
   )
 }

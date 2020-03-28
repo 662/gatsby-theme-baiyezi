@@ -1,5 +1,6 @@
 /** @jsx jsx */
 import PropTypes from 'prop-types'
+import { useStaticQuery, graphql } from 'gatsby'
 import { useEffect, useState } from 'react'
 import { Link } from 'gatsby'
 import { useLocation } from '@reach/router'
@@ -52,23 +53,31 @@ const logoStyle = css`
 `
 
 const Navbar = ({ pages }) => {
+  const {
+    site: {
+      siteMetadata: { menus },
+    },
+  } = useStaticQuery(
+    graphql`
+      query {
+        site {
+          siteMetadata {
+            menus {
+              title
+              icon
+              path
+              match
+            }
+          }
+        }
+      }
+    `
+  )
   const [affix, setAffix] = useState(false)
   const { pathname } = useLocation()
 
-  const menus = [
-    {
-      title: 'Home',
-      icon: 'home',
-      path: '/',
-      match: /^(\/category\/|\/tag\/|\/post\/)/,
-    },
-    { title: 'Archives', icon: 'archive', path: '/archives' },
-    { title: 'About', icon: 'address-card', path: '/about' },
-    { title: 'Guestbook', icon: 'comments', path: '/guestbook' },
-  ]
-
   const isActive = ({ path, match }) =>
-    pathname === path || (match && match.test(pathname))
+    pathname.replace(/(\/$|\/index.html$)/g,'') === path || (match && new RegExp(match).test(pathname))
 
   useEffect(() => {
     const onScroll = () => {
@@ -96,7 +105,9 @@ const Navbar = ({ pages }) => {
           </li>
           {menus.map(menu => (
             <li key={menu.path}>
-              <Link to={menu.path} className={isActive(menu) && 'active'}>
+              <Link
+                to={menu.path}
+                className={isActive(menu) ? 'active' : undefined}>
                 <i className={`fas fa-${menu.icon}`}></i>
                 {menu.title}
               </Link>

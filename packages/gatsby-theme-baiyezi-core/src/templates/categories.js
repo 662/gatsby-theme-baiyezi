@@ -5,15 +5,12 @@ export default Categories
 
 export const pageQuery = graphql`
   query Categories {
-    categories: allBaiyeziPost(filter: { draft: { ne: true } }) {
-      group(field: category___name) {
-        totalCount
-        fieldValue
-        nodes {
-          category {
-            name
-            path
-          }
+    categories: allBaiyeziCategory {
+      edges {
+        node {
+          id
+          name
+          path
         }
       }
     }

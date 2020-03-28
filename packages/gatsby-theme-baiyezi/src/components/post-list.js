@@ -51,7 +51,7 @@ const postItemStyle = css`
     color: #b7b7b7;
     margin-bottom: 16px;
   }
-  .excerpt {
+  .description {
     color: #666666;
     font-family: 'Droid Serif';
     font-size: 13px;
@@ -66,46 +66,42 @@ const postItemStyle = css`
   }
 `
 
-const PostItem = () => {
+const PostItem = ({ node }) => {
   return (
     <div css={postItemStyle}>
       <div className="cover">
         <a
           className="thumb"
-          href="/post/hi"
+          href={node.path}
           css={{
-            background: `url(https://4.bp.blogspot.com/-9qcDqK1Y9C0/WjQEt1JLQDI/AAAAAAAAKG4/gVDqHBjHbRYalLfHawAqHez5IzS8EYhxgCLcBGAs/s1600/07.jpeg) no-repeat center center`,
+            background: `url(${node.image}) no-repeat center center`,
             backgroundSize: 'cover',
           }}></a>
-        <a className="category" href="/category/linux">
-          {`Linux`.toUpperCase()}
+        <a className="category" href={node.category.path}>
+          {node.category.name.toUpperCase()}
         </a>
       </div>
       <div className="detail">
         <div className="title">
-          <a href="/post/hi">Beautiful women relaxing at the luxury poolside</a>
+          <a href={node.path}>{node.title}</a>
         </div>
-        <div className="date">4 YEARS AGO</div>
-        <div className="excerpt">
-          Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper
-          suscipit lobortis nisl ut aliquip ex ea commodo conseq...
-        </div>
+        <div className="date">{node.date}</div>
+        <div className="description">{node.description}</div>
         <div className="bottom">
-          <span> 3 MINUTEREAD</span>
-          <span> 3 MINUTEREAD</span>
+          <span> {node.reading.words} WORDS</span>
+          <span> {node.reading.minutes} MINUTEREAD</span>
         </div>
       </div>
     </div>
   )
 }
 
-const PostList = () => {
+const PostList = ({ edges }) => {
   return (
     <div>
-      <PostItem></PostItem>
-      <PostItem></PostItem>
-      <PostItem></PostItem>
-      <PostItem></PostItem>
+      {edges.map(({ node }) => (
+        <PostItem key={node.id} node={node}></PostItem>
+      ))}
     </div>
   )
 }

@@ -1,4 +1,3 @@
-  
 import { graphql } from 'gatsby'
 import Post from '../routes/post'
 
@@ -7,11 +6,13 @@ export default Post
 export const pageQuery = graphql`
   query Post($id: String!, $previousId: String, $nextId: String) {
     post: baiyeziPost(id: { eq: $id }) {
-      body
+      id
       title
       date
       path
       image
+      description
+      body
       category {
         name
         path
@@ -19,6 +20,10 @@ export const pageQuery = graphql`
       tags {
         name
         path
+      }
+      reading {
+        words
+        minutes
       }
     }
     previous: baiyeziPost(id: { eq: $previousId }) {

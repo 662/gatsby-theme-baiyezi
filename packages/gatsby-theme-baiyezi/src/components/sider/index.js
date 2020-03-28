@@ -1,6 +1,7 @@
 /** @jsx jsx */
 import { css, jsx } from '@emotion/core'
 import PropTypes from 'prop-types'
+import { useStaticQuery, graphql } from 'gatsby'
 import Panel from '../panel'
 import PostItemSmall from '../post-list-small'
 import CategoryList from '../category-list'
@@ -12,17 +13,53 @@ const style = css`
   color: #666;
 `
 
-const Sider = props => {
+const Sider = () => {
+  const { recentPosts, categories, tags } = useStaticQuery(graphql`
+    query Layout {
+      recentPosts: allBaiyeziPost(
+        limit: 5
+        sort: { fields: date, order: DESC }
+      ) {
+        edges {
+          node {
+            id
+            title
+            path
+            image
+          }
+        }
+      }
+      tags: allBaiyeziTag {
+        edges {
+          node {
+            name
+            path
+            id
+          }
+        }
+      }
+      categories: allBaiyeziCategory {
+        edges {
+          node {
+            id
+            name
+            path
+          }
+        }
+      }
+    }
+  `)
+  
   return (
     <div css={style}>
       <Panel title="CATEGORIES">
-        <CategoryList></CategoryList>
+        <CategoryList edges={categories.edges}></CategoryList>
       </Panel>
       <Panel title="TAGS">
-        <TagList></TagList>
+        <TagList edges={tags.edges}></TagList>
       </Panel>
       <Panel title="RECENT POSTS">
-        <PostItemSmall></PostItemSmall>
+        <PostItemSmall edges={recentPosts.edges}></PostItemSmall>
       </Panel>
       <Panel title="LINKS">11</Panel>
     </div>

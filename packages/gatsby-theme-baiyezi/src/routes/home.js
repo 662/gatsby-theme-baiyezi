@@ -2,11 +2,10 @@ import React from 'react'
 import Layout from '../components/layout'
 import PostList from '../components/post-list'
 
-export default function Posts({ data }) {
+export default function Home({ data: { posts } }) {
   return (
     <Layout>
-      <PostList></PostList>
-      <pre>{JSON.stringify(data, null, 2)}</pre>
+      <PostList edges={posts.edges}></PostList>
     </Layout>
   )
 }

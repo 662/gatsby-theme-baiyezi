@@ -1,12 +1,34 @@
+const { createPath } = require('gatsby-theme-baiyezi-core/gatsby/utils/paths')
+
 module.exports = options => ({
   siteMetadata: {
     title: '白叶子',
-    titleTemplate: '%s · The Real Hero',
-    description:
-      'Hogwarts Potions master, Head of Slytherin house and former Death Eater.',
-    url: 'https://www.doe.com', // No trailing slash allowed!
-    image: '/images/snape.jpg', // Path to your image you placed in the 'static' folder
-    twitterUsername: '@occlumency',
+    description: '白叶子.',
+    url: 'https://baiyezi.com',
+    image: '/images/snape.jpg',
+    menus: [
+      {
+        title: 'Home',
+        icon: 'home',
+        path: createPath(options.basePath),
+        match: `^(${options.basePath}\/category\/|${options.basePath}\/tag\/|${options.basePath}\/post\/)`,
+      },
+      {
+        title: 'Archives',
+        icon: 'archive',
+        path: createPath(options.basePath, 'archives'),
+      },
+      {
+        title: 'About',
+        icon: 'address-card',
+        path: createPath(options.basePath, '/about'),
+      },
+      {
+        title: 'Guestbook',
+        icon: 'comments',
+        path: createPath(options.basePath, '/guestbook'),
+      },
+    ],
   },
   plugins: [
     {

@@ -24,28 +24,16 @@ const categoryListStyle = css`
   }
 `
 
-const CategoryItem = () => {
-  return <a href="/category/1">Linux</a>
-}
+const CategoryItem = ({ node }) => <a href={node.path}>{node.name}</a>
 
-const CategoryList = () => {
+const CategoryList = ({ edges }) => {
   return (
     <ul css={categoryListStyle}>
-      <li>
-        <CategoryItem></CategoryItem>
-      </li>
-      <li>
-        <CategoryItem></CategoryItem>
-      </li>
-      <li>
-        <CategoryItem></CategoryItem>
-      </li>
-      <li>
-        <CategoryItem></CategoryItem>
-      </li>
-      <li>
-        <CategoryItem></CategoryItem>
-      </li>
+      {edges.map(({ node }) => (
+        <li key={node.id}>
+          <CategoryItem node={node}></CategoryItem>
+        </li>
+      ))}
     </ul>
   )
 }
