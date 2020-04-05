@@ -65,22 +65,6 @@ module.exports = async (
         name: tag,
         path: createCategoryOrTagPath(options.basePath, paths.tagPath, tag),
       }))
-      fieldData = {
-        ...fieldData,
-        category,
-        tags,
-        date: node.frontmatter.date,
-      }
-      await createNode({
-        id: createNodeId(`BaiyeziPost-${node.id}`),
-        ...fieldData,
-        parent: node.id,
-        children: [],
-        internal: {
-          type: `BaiyeziPost`,
-          contentDigest: createContentDigest(fieldData),
-        },
-      })
 
       await createNode({
         id: createNodeId(`BaiyeziCategory-${category.name}`),
@@ -103,6 +87,23 @@ module.exports = async (
             contentDigest: createContentDigest(tag),
           },
         })
+      })
+
+      fieldData = {
+        ...fieldData,
+        category,
+        tags,
+        date: node.frontmatter.date,
+      }
+      await createNode({
+        id: createNodeId(`BaiyeziPost-${node.id}`),
+        ...fieldData,
+        parent: node.id,
+        children: [],
+        internal: {
+          type: `BaiyeziPost`,
+          contentDigest: createContentDigest(fieldData),
+        },
       })
     }
   }

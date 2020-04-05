@@ -1,5 +1,6 @@
 /** @jsx jsx */
 import { css, jsx } from '@emotion/core'
+import { Link } from 'gatsby'
 
 const categoryListStyle = css`
   li {
@@ -24,7 +25,7 @@ const categoryListStyle = css`
   }
 `
 
-const CategoryItem = ({ node }) => <a href={node.path}>{node.name}</a>
+const CategoryItem = ({ node }) => <Link to={node.path}>{node.name}</Link>
 
 const CategoryList = ({ edges }) => {
   return (

@@ -12,7 +12,7 @@ export const pageQuery = graphql`
         node {
           id
           title
-          date
+          date(formatString: "YYYY-MM-DD")
           path
           image
           description

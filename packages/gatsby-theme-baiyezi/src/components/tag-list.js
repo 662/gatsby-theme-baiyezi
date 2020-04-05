@@ -1,5 +1,6 @@
 /** @jsx jsx */
 import { css, jsx } from '@emotion/core'
+import { Link } from 'gatsby'
 
 const tagListStyle = css`
   display: flex;
@@ -26,7 +27,7 @@ const tagListStyle = css`
   }
 `
 
-const TagItem = ({ node }) => <a href={node.path}>{node.name}</a>
+const TagItem = ({ node }) => <Link to={node.path}>{node.name}</Link>
 
 const TagList = ({ edges }) => {
   return (

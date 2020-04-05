@@ -10,22 +10,9 @@ export const pageQuery = graphql`
         node {
           id
           title
-          date
+          year: date(formatString: "YYYY")
+          date(formatString: "MM-DD")
           path
-          image
-          description
-          category {
-            name
-            path
-          }
-          tags {
-            name
-            path
-          }
-          reading {
-            words
-            minutes
-          }
         }
       }
     }

@@ -1,5 +1,6 @@
 /** @jsx jsx */
 import { css, jsx } from '@emotion/core'
+import { Link } from 'gatsby'
 
 const postItemStyle = css`
   display: flex;
@@ -70,20 +71,20 @@ const PostItem = ({ node }) => {
   return (
     <div css={postItemStyle}>
       <div className="cover">
-        <a
+        <Link
           className="thumb"
-          href={node.path}
+          to={node.path}
           css={{
             background: `url(${node.image}) no-repeat center center`,
             backgroundSize: 'cover',
-          }}></a>
-        <a className="category" href={node.category.path}>
+          }}></Link>
+        <Link className="category" to={node.category.path}>
           {node.category.name.toUpperCase()}
-        </a>
+        </Link>
       </div>
       <div className="detail">
         <div className="title">
-          <a href={node.path}>{node.title}</a>
+          <Link to={node.path}>{node.title}</Link>
         </div>
         <div className="date">{node.date}</div>
         <div className="description">{node.description}</div>

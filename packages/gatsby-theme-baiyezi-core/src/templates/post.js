@@ -8,7 +8,7 @@ export const pageQuery = graphql`
     post: baiyeziPost(id: { eq: $id }) {
       id
       title
-      date
+      date(formatString: "YYYY-MM-DD")
       path
       image
       description

@@ -52,16 +52,16 @@ const Sider = () => {
   
   return (
     <div css={style}>
-      <Panel title="CATEGORIES">
+      <Panel title="CATEGORIES" icon="folder">
         <CategoryList edges={categories.edges}></CategoryList>
       </Panel>
-      <Panel title="TAGS">
+      <Panel title="TAGS" icon="star">
         <TagList edges={tags.edges}></TagList>
       </Panel>
-      <Panel title="RECENT POSTS">
+      <Panel title="RECENT POSTS" icon="file">
         <PostItemSmall edges={recentPosts.edges}></PostItemSmall>
       </Panel>
-      <Panel title="LINKS">11</Panel>
+      {/* <Panel title="LINKS" icon="folder">11</Panel> */}
     </div>
   )
 }

@@ -8,44 +8,37 @@ const panelStyle = css`
   margin: 0 0 50px 0;
   border: 1px solid #eee;
 `
+const miniPanelStyle = css`
+  padding: 8px;
+  background-color: #fff;
+  overflow: hidden;
+  margin-bottom: 16px;
+`
 
 const titleStyle = css`
-  position: relative;
-  margin-bottom: 20px;
+  margin-bottom: 24px;
   font-family: 'Open Sans', sans-serif;
   letter-spacing: 2px;
-  span {
-    position: relative;
-    display: inline-block;
-    font-size: 14px;
-    font-weight: 900;
-    text-transform: uppercase;
-    letter-spacing: 2px;
-    background-color: #fff;
-    padding: 0 10px 0 0;
-    z-index: 1;
-    color: #000;
-  }
-
-  &:after {
-    position: absolute;
-    content: '';
-    width: 100%;
-    height: 2px;
-    background-color: #eee;
-    top: 50%;
-    left: 0;
-    margin-top: 1px;
-    z-index: 0;
+  font-size: 14px;
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  color: #000;
+  i {
+    font-size: 16px;
+    margin-right: 4px;
   }
 `
 
-const Panel = ({ children, title }) => {
+const Panel = ({ children, icon, title, mini, ...props }) => {
   return (
-    <div css={panelStyle}>
-      <div css={titleStyle}>
-        <span>{title}</span>
-      </div>
+    <div css={mini ? miniPanelStyle : panelStyle} {...props}>
+      {(title || icon) && (
+        <div css={titleStyle}>
+          {icon && <i className={`far fa-${icon}`}></i>}
+          <span>{title}</span>
+        </div>
+      )}
       <div>{children}</div>
     </div>
   )

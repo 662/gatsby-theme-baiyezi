@@ -1,5 +1,6 @@
 /** @jsx jsx */
 import { css, jsx } from '@emotion/core'
+import { Link } from 'gatsby'
 
 const postItemSmallStyle = css`
   display: flex;
@@ -35,16 +36,16 @@ const PostItemSmall = ({ node }) => {
   return (
     <div css={postItemSmallStyle}>
       <div className="thumb">
-        <a
-          href={node.path}
+        <Link
+          to={node.path}
           css={{
             background: `url(${node.image}) no-repeat center center`,
             backgroundSize: 'cover',
-          }}></a>
+          }}></Link>
       </div>
       <div className="detail">
         <div className="title">
-          <a href={node.path}>{node.title}</a>
+          <Link to={node.path}>{node.title}</Link>
         </div>
       </div>
     </div>
