@@ -2,12 +2,12 @@
 import { css, jsx } from '@emotion/core'
 import Layout from '../components/layout'
 import Panel from '../components/panel'
+import Comments from '../components/comments'
 import 'github-markdown-css'
 
 export default function Page({ data: { page } }) {
   return (
     <Layout>
-      {/* <pre>{JSON.stringify(data, null, 2)}</pre> */}
       <Panel>
         <h2
           css={css`
@@ -21,6 +21,8 @@ export default function Page({ data: { page } }) {
           dangerouslySetInnerHTML={{ __html: page.body }}
         />
       </Panel>
+
+      {page.allowComment && <Comments></Comments>}
     </Layout>
   )
 }

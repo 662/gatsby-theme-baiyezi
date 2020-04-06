@@ -35,6 +35,8 @@ module.exports = async (
       await createNode({
         id: baiyeziPageId,
         ...fieldData,
+        icon: node.frontmatter.icon || '',
+        allowComment: !!node.frontmatter.allowComment,
         parent: node.id,
         children: [],
         internal: {

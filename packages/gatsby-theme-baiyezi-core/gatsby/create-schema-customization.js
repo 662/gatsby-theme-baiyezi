@@ -64,7 +64,11 @@ module.exports = ({ actions, schema }) => {
   createTypes(
     schema.buildObjectType({
       name: `BaiyeziPage`,
-      fields: { ...publicFields, icon: { type: `String` } },
+      fields: {
+        ...publicFields,
+        icon: { type: `String` },
+        allowComment: { type: `Boolean!` },
+      },
       interfaces: [`Node`],
     })
   )

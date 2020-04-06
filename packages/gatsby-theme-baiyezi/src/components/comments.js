@@ -1,7 +1,16 @@
-import React from 'react'
-import { Link, useStaticQuery, graphql } from 'gatsby'
+/** @jsx jsx */
+import { css, jsx } from '@emotion/core'
+import { useStaticQuery, graphql } from 'gatsby'
 import GitalkComponent from 'gitalk/dist/gitalk-component'
 import 'gitalk/dist/gitalk.css'
+import Panel from '../components/panel'
+
+const commentsStyle = css`
+  .gt-meta {
+    margin-top: 0;
+    padding-top: 0;
+  }
+`
 
 export default function Comments() {
   const {
@@ -27,11 +36,13 @@ export default function Comments() {
     `
   )
   return (
-    <GitalkComponent
-      options={{
-        ...gitalk,
-        id: window.location.pathname,
-      }}
-    />
+    <Panel css={commentsStyle}>
+      <GitalkComponent
+        options={{
+          ...gitalk,
+          id: window.location.pathname,
+        }}
+      />
+    </Panel>
   )
 }

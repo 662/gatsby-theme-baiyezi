@@ -75,13 +75,6 @@ const postStyle = css`
   }
 `
 
-const commentsStyle = css`
-  .gt-meta {
-    margin-top: 0;
-    padding-top: 0;
-  }
-`
-
 export default function Post({ data: { post, previous, next } }) {
   return (
     <Layout>
@@ -119,9 +112,7 @@ export default function Post({ data: { post, previous, next } }) {
           </div>
         </div>
       </Panel>
-      <Panel css={commentsStyle}>
-        <Comments></Comments>
-      </Panel>
+      <Comments></Comments>
     </Layout>
   )
 }
