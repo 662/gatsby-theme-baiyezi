@@ -6,6 +6,20 @@ module.exports = options => ({
     description: '白叶子.',
     url: 'https://baiyezi.com',
     image: '/images/snape.jpg',
+    gitalk: {
+      clientID: 'a9ea8ec21008341ab6f8',
+      clientSecret: '6656888d4258b947370b8b27b7650baa4e97fca2',
+      repo: 'blog',
+      owner: '662',
+      admin: ['662'],
+      distractionFreeMode: false,
+    },
+    links: [
+      {
+        title: '白叶子',
+        url: 'https://baiyezi.com',
+      },
+    ],
     menus: [
       {
         title: 'Home',

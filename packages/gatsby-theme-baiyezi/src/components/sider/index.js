@@ -6,6 +6,7 @@ import Panel from '../panel'
 import PostItemSmall from '../post-list-small'
 import CategoryList from '../category-list'
 import TagList from '../tag-list'
+import LinkList from '../link-list'
 
 const style = css`
   overflow: hidden;
@@ -14,7 +15,7 @@ const style = css`
 `
 
 const Sider = () => {
-  const { recentPosts, categories, tags } = useStaticQuery(graphql`
+  const { recentPosts, categories, tags, site } = useStaticQuery(graphql`
     query Layout {
       recentPosts: allBaiyeziPost(
         limit: 5
@@ -47,9 +48,17 @@ const Sider = () => {
           }
         }
       }
+      site {
+        siteMetadata {
+          links {
+            title
+            url
+          }
+        }
+      }
     }
   `)
-  
+
   return (
     <div css={style}>
       <Panel title="CATEGORIES" icon="folder">
@@ -61,7 +70,9 @@ const Sider = () => {
       <Panel title="RECENT POSTS" icon="file">
         <PostItemSmall edges={recentPosts.edges}></PostItemSmall>
       </Panel>
-      {/* <Panel title="LINKS" icon="folder">11</Panel> */}
+      <Panel title="LINKS" icon="link">
+        <LinkList links={site.siteMetadata.links}></LinkList>
+      </Panel>
     </div>
   )
 }

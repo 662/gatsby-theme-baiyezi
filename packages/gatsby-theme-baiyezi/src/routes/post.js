@@ -3,6 +3,7 @@ import { css, jsx } from '@emotion/core'
 import { Link } from 'gatsby'
 import Layout from '../components/layout'
 import Panel from '../components/panel'
+import Comments from '../components/comments'
 import 'github-markdown-css'
 
 const postStyle = css`
@@ -74,8 +75,14 @@ const postStyle = css`
   }
 `
 
+const commentsStyle = css`
+  .gt-meta {
+    margin-top: 0;
+    padding-top: 0;
+  }
+`
+
 export default function Post({ data: { post, previous, next } }) {
-  console.log(post.body)
   return (
     <Layout>
       <Panel css={postStyle}>
@@ -84,7 +91,7 @@ export default function Post({ data: { post, previous, next } }) {
         </div>
         <div className="post-meta">
           <span className="post-category">
-            <i className={`far fa-folder`}></i>
+            <i className={`fas fa-folder`}></i>
             <Link to={post.category.path}>{post.category.name}</Link>
           </span>
           <span className="post-timestamp">{post.date}</span>
@@ -111,6 +118,9 @@ export default function Post({ data: { post, previous, next } }) {
             ))}
           </div>
         </div>
+      </Panel>
+      <Panel css={commentsStyle}>
+        <Comments></Comments>
       </Panel>
     </Layout>
   )

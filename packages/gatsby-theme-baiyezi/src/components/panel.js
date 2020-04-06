@@ -35,7 +35,7 @@ const Panel = ({ children, icon, title, mini, ...props }) => {
     <div css={mini ? miniPanelStyle : panelStyle} {...props}>
       {(title || icon) && (
         <div css={titleStyle}>
-          {icon && <i className={`far fa-${icon}`}></i>}
+          {icon && <i className={`fas fa-${icon}`}></i>}
           <span>{title}</span>
         </div>
       )}
