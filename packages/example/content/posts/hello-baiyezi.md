@@ -2,6 +2,7 @@
 title: Hello Baiyezi
 date: 2020-04-02
 category: Gatsby
+image: /media/2b.jpg
 tags:
   - hello
   - world

@@ -1,7 +1,9 @@
 /** @jsx jsx */
+import { useCallback } from 'react'
 import { css, jsx } from '@emotion/core'
 import { useStaticQuery, graphql } from 'gatsby'
-import GitalkComponent from 'gitalk/dist/gitalk-component'
+import { useLocation } from '@reach/router'
+import Gitalk from 'gitalk'
 import 'gitalk/dist/gitalk.css'
 import Panel from '../components/panel'
 
@@ -13,10 +15,9 @@ const commentsStyle = css`
 `
 
 export default function Comments() {
+  const { pathname } = useLocation()
   const {
-    site: {
-      siteMetadata: { gitalk },
-    },
+    site: { siteMetadata },
   } = useStaticQuery(
     graphql`
       query {
@@ -35,14 +36,20 @@ export default function Comments() {
       }
     `
   )
+
+  const commentRef = useCallback(
+    node => {
+      if (node !== null) {
+        const gitalk = new Gitalk({ ...siteMetadata.gitalk, id: pathname })
+        gitalk.render(node)
+      }
+    },
+    [pathname]
+  )
+
   return (
     <Panel css={commentsStyle}>
-      <GitalkComponent
-        options={{
-          ...gitalk,
-          id: window.location.pathname,
-        }}
-      />
+      <div ref={commentRef}></div>
     </Panel>
   )
 }

@@ -3,8 +3,9 @@ title: About
 slug: about
 icon: address-card
 excerpt: Baiyezi about page
+image: /media/2b.jpg
 ---
 
 About page
 
-![image](../assets/about/2b.jpg)
+![image](/media/2b.jpg)

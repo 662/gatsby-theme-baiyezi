@@ -4,6 +4,7 @@ import { Link } from 'gatsby'
 import Layout from '../components/layout'
 import Panel from '../components/panel'
 import Comments from '../components/comments'
+import Image from '../components/image'
 import 'github-markdown-css'
 
 const postStyle = css`
@@ -92,11 +93,7 @@ export default function Post({ data: { post, previous, next } }) {
             {post.reading.words} WORDS {post.reading.minutes} MINUTEREAD
           </span>
         </div>
-        {post.image && (
-          <div>
-            <img src={post.image} alt={post.title} />
-          </div>
-        )}
+        <Image src={post.image} title={post.title}></Image>
         <div
           className="markdown-body"
           dangerouslySetInnerHTML={{ __html: post.body }}

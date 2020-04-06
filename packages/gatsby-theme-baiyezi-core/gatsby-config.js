@@ -27,7 +27,7 @@ module.exports = themeOptions => {
         resolve: 'gatsby-plugin-copy-files',
         options: {
           source: options.assetPath,
-          destination: `${options.basePath}/assets`,
+          destination: `/assets`,
         },
       },
     ],
