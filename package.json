@@ -7,6 +7,7 @@
     "url": "https://baiyezi.com"
   },
   "scripts": {
+    "publish": "lerna publish",
     "build": "yarn workspace example build",
     "dev": "yarn run clean && yarn workspace example develop",
     "clean": "yarn workspace example clean"
@@ -26,6 +27,7 @@
   },
   "devDependencies": {
     "husky": "^4.2.3",
+    "lerna": "^3.20.2",
     "lint-staged": "^10.0.8"
   }
 }
