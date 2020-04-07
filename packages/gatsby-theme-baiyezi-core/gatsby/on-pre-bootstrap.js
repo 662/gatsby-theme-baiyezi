@@ -1,6 +1,7 @@
 'use strict'
 const fs = require(`fs`)
 const path = require(`path`)
+const mkdirp = require(`mkdirp`)
 const Debug = require(`debug`)
 const debug = Debug(`gatsby-theme-baiyezi-core`)
 const getOptions = require('./utils/options')
