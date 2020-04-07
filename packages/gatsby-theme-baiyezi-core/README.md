@@ -77,15 +77,18 @@ module.exports = {
 
 The following are the defined blog post fields based on the node interface in the schema
 
-| Field    | Type             |
-| -------- | ---------------- |
-| id       | String           |
-| title    | String           |
-| body     | String           |
-| slug     | String           |
-| date     | Date             |
-| tags     | String[]         |
-| category | String           |
-| excerpt  | String           |
-| draft    | Boolean          |
-| type     | 'post' \| 'page' |
+#### BaiyeziPost
+
+| Field       | Type     |
+| ----------- | -------- |
+| id          | String   |
+| title       | String   |
+| body        | String   |
+| path        | String   |
+| description | String   |
+| draft       | Boolean  |
+| image       | String   |
+| tags        | Tag[]    |
+| category    | Category |
+| reading     | Reading  |
+| date        | Date     |

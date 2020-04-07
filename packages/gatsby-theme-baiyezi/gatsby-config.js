@@ -51,12 +51,5 @@ module.exports = options => ({
       resolve: `gatsby-theme-baiyezi-core`,
       options: { basePath: options.basePath },
     },
-    {
-      resolve: 'gatsby-source-filesystem',
-      options: {
-        name: 'assets',
-        path: `${__dirname}/static`,
-      },
-    },
   ],
 })

@@ -8,6 +8,12 @@ Based on Gatsby's blog theme and added netlify-cms for rapid blog generation and
 
 - gatsby-theme-baiyezi-core
 - gatsby-plugin-react-helmet
+- react-helmet
+- gatsby-plugin-emotion
+- @emotion/core
+- gitalk
+- github-markdown-css
+- react-helmet
 
 ## How to install
 
