@@ -1,6 +1,6 @@
 {
   "name": "gatsby-theme-baiyezi",
-  "version": "1.0.0",
+  "version": "0.0.1",
   "main": "gatsby-config.js",
   "license": "MIT",
   "description": "Based on Gatsby's blog theme and added netlify-cms for rapid blog generation and online writing",
