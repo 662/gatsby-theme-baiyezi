@@ -3,6 +3,7 @@ import { css, jsx } from '@emotion/core'
 import { Link } from 'gatsby'
 import Layout from '../components/layout'
 import Panel from '../components/panel'
+import SiteMetadata from '../components/site-metadata'
 
 const groupStyle = css`
   margin-bottom: 64px;
@@ -44,6 +45,7 @@ export default function Posts({ data: { archives } }) {
 
   return (
     <Layout>
+      <SiteMetadata title="Archives"></SiteMetadata>
       <Panel>
         {groups.map(group => (
           <div key={group.key} css={groupStyle}>

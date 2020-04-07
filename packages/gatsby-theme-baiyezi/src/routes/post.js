@@ -5,6 +5,7 @@ import Layout from '../components/layout'
 import Panel from '../components/panel'
 import Comments from '../components/comments'
 import Image from '../components/image'
+import SiteMetadata from '../components/site-metadata'
 import 'github-markdown-css'
 
 const postStyle = css`
@@ -79,6 +80,9 @@ const postStyle = css`
 export default function Post({ data: { post, previous, next } }) {
   return (
     <Layout>
+      <SiteMetadata
+        title={post.title}
+        description={post.description}></SiteMetadata>
       <Panel css={postStyle}>
         <div className="post-header">
           <h1>{post.title}</h1>

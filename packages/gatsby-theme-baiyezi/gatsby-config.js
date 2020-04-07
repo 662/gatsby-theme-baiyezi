@@ -3,9 +3,10 @@ const { createPath } = require('gatsby-theme-baiyezi-core/gatsby/utils/paths')
 module.exports = options => ({
   siteMetadata: {
     title: '白叶子',
-    description: '白叶子.',
+    subtitle: '万物折腾记',
+    description: '白叶子的技术博客，前端技术，全栈技术',
+    keywords: '白叶子,白叶子博客,baiyezi,程序员博客,前端博客',
     url: 'https://baiyezi.com',
-    image: '/images/snape.jpg',
     gitalk: {
       clientID: 'a9ea8ec21008341ab6f8',
       clientSecret: '6656888d4258b947370b8b27b7650baa4e97fca2',
@@ -45,6 +46,7 @@ module.exports = options => ({
     ],
   },
   plugins: [
+    `gatsby-plugin-react-helmet`,
     {
       resolve: `gatsby-theme-baiyezi-core`,
       options: { basePath: options.basePath },
