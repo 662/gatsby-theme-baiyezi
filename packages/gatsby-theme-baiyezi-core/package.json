@@ -4,6 +4,10 @@
   "main": "gatsby-config.js",
   "license": "MIT",
   "description": "Lightweight blog theme based on Gatsby",
+  "sideEffects": false,
+  "publishConfig": {
+    "registry": "https://registry.npmjs.org"
+  },
   "keywords": [
     "baiyezi",
     "baiyezi-core",
