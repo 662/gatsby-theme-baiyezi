@@ -1,6 +1,6 @@
 {
   "name": "gatsby-theme-baiyezi",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "main": "gatsby-config.js",
   "license": "MIT",
   "description": "Based on Gatsby's blog theme and added netlify-cms for rapid blog generation and online writing",
@@ -39,7 +39,7 @@
     "@emotion/core": "^10.0.28",
     "gatsby-plugin-emotion": "^4.1.24",
     "gatsby-plugin-react-helmet": "^3.1.22",
-    "gatsby-theme-baiyezi-core": "^0.0.2",
+    "gatsby-theme-baiyezi-core": "^0.0.3",
     "gitalk": "^1.6.2",
     "github-markdown-css": "^4.0.0",
     "react-helmet": "^5.2.1"
