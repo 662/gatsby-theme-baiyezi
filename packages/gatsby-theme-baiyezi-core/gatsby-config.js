@@ -9,7 +9,6 @@ module.exports = themeOptions => {
       baiyeziPath: options.basePath,
     },
     plugins: [
-      `gatsby-plugin-react-helmet`,
       `gatsby-transformer-remark`,
       {
         resolve: `gatsby-source-filesystem`,
