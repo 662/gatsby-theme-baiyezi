@@ -1,6 +1,6 @@
 {
   "name": "example",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "license": "MIT",
   "private": true,
   "author": {
@@ -21,7 +21,7 @@
   },
   "dependencies": {
     "gatsby": "^2.19.28",
-    "gatsby-theme-baiyezi": "0.0.1",
+    "gatsby-theme-baiyezi": "^0.0.2",
     "react": "^16.13.0",
     "react-dom": "^16.13.0"
   }

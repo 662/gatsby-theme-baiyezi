@@ -1,6 +1,6 @@
 {
   "name": "gatsby-theme-baiyezi-core",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "main": "gatsby-config.js",
   "license": "MIT",
   "description": "Lightweight blog theme based on Gatsby",
