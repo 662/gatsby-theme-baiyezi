@@ -1,6 +1,5 @@
 /** @jsx jsx */
 import { css, jsx } from '@emotion/core'
-import PropTypes from 'prop-types'
 import Navbar from './navbar'
 import Content from './content'
 
@@ -18,7 +17,5 @@ const Header = props => {
     </div>
   )
 }
-
-Header.propTypes = {}
 
 export default Header

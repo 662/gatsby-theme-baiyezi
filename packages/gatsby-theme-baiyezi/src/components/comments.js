@@ -44,7 +44,7 @@ export default function Comments() {
         gitalk.render(node)
       }
     },
-    [pathname]
+    [pathname, siteMetadata]
   )
 
   return (

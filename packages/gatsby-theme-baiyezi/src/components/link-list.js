@@ -10,7 +10,7 @@ const linkistStyle = css`
 `
 
 const LinkItem = ({ link }) => (
-  <a target="_blank" href={link.url}>
+  <a target="_blank" href={link.url} rel="noopener noreferrer">
     {link.title}
   </a>
 )

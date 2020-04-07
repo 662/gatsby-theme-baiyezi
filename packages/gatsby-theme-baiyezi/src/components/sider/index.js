@@ -1,6 +1,5 @@
 /** @jsx jsx */
 import { css, jsx } from '@emotion/core'
-import PropTypes from 'prop-types'
 import { useStaticQuery, graphql } from 'gatsby'
 import Panel from '../panel'
 import PostItemSmall from '../post-list-small'
@@ -76,7 +75,5 @@ const Sider = () => {
     </div>
   )
 }
-
-Sider.propTypes = {}
 
 export default Sider
